@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case shareAction = "ShareAction"
         case favoriteAction = "FavoriteAction"
         case testAction = "TestAction"
+        case defaultAction = "DefaultAction"
     }
     
     static let favoriteIdentifierInfoKey = "FavoriteIdentifier"
@@ -26,10 +27,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         /** Process the quick action if the user selected one to launch the app.
             Grab a reference to the shortcutItem to use in the scene.
         */
+        guard let _: UIWindowScene = scene as? UIWindowScene else { return }
+        maybeOpenedFromWidget(urlContexts: connectionOptions.urlContexts)
         if let shortcutItem = connectionOptions.shortcutItem {
             // Save it off for later when we become active.
             savedShortCutItem = shortcutItem
         }
+    }
+    
+   
+
+    // App opened from background
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        print("from widget")
+      //  maybeOpenedFromWidget(urlContexts: URLContexts)
+       guard let windowScene = (scene as? UIWindowScene) else { return }
+            window = UIWindow(frame: UIScreen.main.bounds)
+            
+            if let item = URLContexts.first {
+                let url = item.url
+
+                if "\(url)" == "scheme://camera" {
+                    let vc = ViewController()
+                    let navController = UINavigationController(rootViewController: vc)
+                    
+                    window?.rootViewController = navController
+                    window?.makeKeyAndVisible()
+                    window?.windowScene = windowScene
+                    
+            let cameraController = CamaraViewController()
+            let camNavController = UINavigationController(rootViewController: cameraController)
+                    navController.present(camNavController, animated: true, completion: nil)
+                }
+            }
+    }
+
+    private func maybeOpenedFromWidget(urlContexts: Set<UIOpenURLContext>) {
+        guard let _: UIOpenURLContext = urlContexts.first(where: { $0.url.scheme == "widget-deeplink" }) else { return }
+        print("🚀 Launched from widget")
     }
 
     // MARK: - Application Shortcut Support
@@ -55,6 +90,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             case .favoriteAction:
                 // Go to that particular favorite shortcut.
                 showAlert(message: "Favourite Contact")
+            case .defaultAction:
+                showAlert(message: "Default action")
 //                if let favoriteIdentifier = shortcutItem.userInfo?[SceneDelegate.favoriteIdentifierInfoKey] as? String {
 //                    // Find the favorite contact from the userInfo identifier.
 //
@@ -83,6 +120,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func windowScene(_ windowScene: UIWindowScene,
                      performActionFor shortcutItem: UIApplicationShortcutItem,
                      completionHandler: @escaping (Bool) -> Void) {
+        print("Peform action for shortcut")
         let handled = handleShortCutItem(shortcutItem: shortcutItem)
         completionHandler(handled)
     }

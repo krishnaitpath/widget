@@ -21,6 +21,11 @@
 		DC0E66C1290BB1A8003FFE42 /* myWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DC0E66BD290BB1A4003FFE42 /* myWidget.intentdefinition */; };
 		DC0E66C2290BB1A8003FFE42 /* myWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DC0E66BD290BB1A4003FFE42 /* myWidget.intentdefinition */; };
 		DC0E66C5290BB1A8003FFE42 /* myWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DC0E66B4290BB1A4003FFE42 /* myWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DC5E6273293A0D1B00660771 /* CamaraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E6272293A0D1B00660771 /* CamaraViewController.swift */; };
+		DCF368D1291E3A350087358B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DCF368D0291E3A350087358B /* FirebaseAnalytics */; };
+		DCF368D3291E3A350087358B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DCF368D2291E3A350087358B /* FirebaseAuth */; };
+		DCF368D5291E3A350087358B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DCF368D4291E3A350087358B /* FirebaseCrashlytics */; };
+		DCFEDFED291D030B00961BDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCFEDFEC291D030B00961BDA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,8 @@
 		DC0E66C0290BB1A8003FFE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC0E66CA290BD149003FFE42 /* widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		DC0E66CB290BD1A0003FFE42 /* myWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myWidgetExtension.entitlements; sourceTree = "<group>"; };
+		DC5E6272293A0D1B00660771 /* CamaraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamaraViewController.swift; sourceTree = "<group>"; };
+		DCFEDFEC291D030B00961BDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF368D5291E3A350087358B /* FirebaseCrashlytics in Frameworks */,
+				DCF368D1291E3A350087358B /* FirebaseAnalytics in Frameworks */,
+				DCF368D3291E3A350087358B /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,11 +125,13 @@
 				DC0E6699290BB171003FFE42 /* AppDelegate.swift */,
 				DC0E669B290BB171003FFE42 /* SceneDelegate.swift */,
 				DC0E669D290BB171003FFE42 /* ViewController.swift */,
+				DC5E6272293A0D1B00660771 /* CamaraViewController.swift */,
 				DC0E669F290BB171003FFE42 /* Main.storyboard */,
 				DC0E66A5290BB172003FFE42 /* Assets.xcassets */,
 				DC0E66A7290BB172003FFE42 /* LaunchScreen.storyboard */,
 				DC0E66AA290BB172003FFE42 /* Info.plist */,
 				DC0E66A2290BB171003FFE42 /* widget.xcdatamodeld */,
+				DCFEDFEC291D030B00961BDA /* GoogleService-Info.plist */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -155,6 +167,7 @@
 				DC0E6693290BB171003FFE42 /* Frameworks */,
 				DC0E6694290BB171003FFE42 /* Resources */,
 				DC0E66C9290BB1A8003FFE42 /* Embed App Extensions */,
+				DCFEDFF1291D040B00961BDA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -162,6 +175,11 @@
 				DC0E66C4290BB1A8003FFE42 /* PBXTargetDependency */,
 			);
 			name = widget;
+			packageProductDependencies = (
+				DCF368D0291E3A350087358B /* FirebaseAnalytics */,
+				DCF368D2291E3A350087358B /* FirebaseAuth */,
+				DCF368D4291E3A350087358B /* FirebaseCrashlytics */,
+			);
 			productName = widget;
 			productReference = DC0E6696290BB171003FFE42 /* widget.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +228,9 @@
 				Base,
 			);
 			mainGroup = DC0E668D290BB171003FFE42;
+			packageReferences = (
+				DCF368CF291E3A350087358B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = DC0E6697290BB171003FFE42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -226,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0E66A9290BB172003FFE42 /* LaunchScreen.storyboard in Resources */,
+				DCFEDFED291D030B00961BDA /* GoogleService-Info.plist in Resources */,
 				DC0E66A6290BB172003FFE42 /* Assets.xcassets in Resources */,
 				DC0E66A1290BB171003FFE42 /* Main.storyboard in Resources */,
 			);
@@ -241,12 +263,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DCFEDFF1291D040B00961BDA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC0E6692290BB171003FFE42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DC0E669E290BB171003FFE42 /* ViewController.swift in Sources */,
+				DC5E6273293A0D1B00660771 /* CamaraViewController.swift in Sources */,
 				DC0E66C2290BB1A8003FFE42 /* myWidget.intentdefinition in Sources */,
 				DC0E669A290BB171003FFE42 /* AppDelegate.swift in Sources */,
 				DC0E669C290BB171003FFE42 /* SceneDelegate.swift in Sources */,
@@ -327,7 +372,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -421,6 +466,7 @@
 				DEVELOPMENT_TEAM = M36758779V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -450,6 +496,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -479,7 +526,7 @@
 				DEVELOPMENT_TEAM = M36758779V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = myWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,7 +553,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = myWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,6 +601,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DCF368CF291E3A350087358B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DCF368D0291E3A350087358B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF368CF291E3A350087358B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		DCF368D2291E3A350087358B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF368CF291E3A350087358B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		DCF368D4291E3A350087358B /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF368CF291E3A350087358B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DC0E66A2290BB171003FFE42 /* widget.xcdatamodeld */ = {

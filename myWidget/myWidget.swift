@@ -45,12 +45,18 @@ struct SimpleEntry: TimelineEntry {
 
 struct myWidgetEntryView : View {
     var entry: Provider.Entry
-
+    private static let deeplinkURL: URL = URL(string: "widget-deeplink://")!
+    
     var body: some View {
         ZStack{
-            Image("background").resizable()
-            Text(entry.text).foregroundColor(.red)
-        }
+            Text("TEST").widgetURL(URL(string: "https://www.google.co.in/"))
+            Image("background").resizable() .widgetURL(URL(string: "https://www.google.co.in/"))
+//            Text(entry.text).foregroundColor(.red)
+//            Link(destination: URL(string: "scheme://camera")!, label: {
+//                           Text("Camera")
+//                       })
+            
+        }.widgetURL(URL(string: "widget://CamaraViewController"))
        // Text(entry.date, style: .time)
     }
 }
@@ -58,7 +64,7 @@ struct myWidgetEntryView : View {
 @main
 struct myWidget: Widget {
     let kind: String = "myWidget"
-
+    private static let deeplinkURL: URL = URL(string: "widget-deeplink://")!
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             myWidgetEntryView(entry: entry)
@@ -71,6 +77,6 @@ struct myWidget: Widget {
 struct myWidget_Previews: PreviewProvider {
     static var previews: some View {
         myWidgetEntryView(entry: SimpleEntry(date: Date(), text: "", configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
     }
 }

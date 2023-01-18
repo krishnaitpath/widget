@@ -6,9 +6,11 @@
 //
 import WidgetKit
 import UIKit
+import FirebaseCore
+import Firebase
 
 class ViewController: UIViewController {
-
+    
     private let nameField: UITextField = {
         let nameField = UITextField()
         nameField.placeholder = "Enter text"
@@ -23,8 +25,10 @@ class ViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       // fatalError()
         // Do any additional setup after loading the view.
         view.backgroundColor = .blue
         view.addSubview(nameField)
@@ -38,6 +42,9 @@ class ViewController: UIViewController {
         button.frame = CGRect(x: 30, y: view.safeAreaInsets.top + 70, width: self.view.frame.width - 40, height: 50)
     }
     @objc private func btnTapped(){
+      // Button("Crash") {
+        //  fatalError("Crash was triggered")
+        //}
         nameField.resignFirstResponder()
         let userdefault = UserDefaults(suiteName: "group.widgetcatch")
         guard let text = nameField.text, !text.isEmpty else{
