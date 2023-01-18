@@ -13,5 +13,6 @@ jobs:
       - name: Force XCode 13.2
         run: sudo xcode-select -switch /Applications/Xcode_13.2.app
       - name: Test Unit Test
-        
-
+        script: |
+            xcode-project run-tests\
+            --workspace widget.xcworkspace\
