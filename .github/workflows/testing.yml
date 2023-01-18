@@ -1,6 +1,6 @@
 name: Testing
 on:
-  push_request:
+  push:
     branches:
     - master
 jobs:
