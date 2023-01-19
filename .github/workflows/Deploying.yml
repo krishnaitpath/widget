@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      
 jobs:
   deploy:
     name: Deploying to Testflight
